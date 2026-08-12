@@ -35,8 +35,11 @@ def main():
  if '' in ids or len(ids)!=len(set(ids)):raise ValueError('tenant_id缺失或重复')
  if any(x['metric_name'] not in policy['allowed_metrics'] or x['window'] not in policy['allowed_windows'] for x in tenants):raise ValueError('租户字段不符合迁移策略')
  if any(x in {'titleFragment','queryFragment'} for x in tenants[0]):raise ValueError('租户目录仍含可执行片段字段')
- output.mkdir(parents=True);(output/'chart').mkdir();(output/'values').mkdir();(output/'renders').mkdir();(output/'reports').mkdir();(output/'tools').mkdir()
- shutil.copytree(ROOT/'chart',output/'chart/tenant-dashboards');shutil.copy2(Path(__file__),output/'tools/build_delivery.py')
+ environment_names=[x['environment'] for x in environments]
+ if environment_names!=policy['rollout_order']:raise ValueError('环境顺序与上线策略不一致')
+ if not isinstance(policy['observation_minutes'],int) or policy['observation_minutes']<=0:raise ValueError('观察时长无效')
+ output.mkdir(parents=True);(output/'chart').mkdir();(output/'values').mkdir();(output/'renders').mkdir();(output/'reports').mkdir()
+ shutil.copytree(ROOT/'chart',output/'chart/tenant-dashboards')
  inventory=[]
  for environment in environments:
   values=output/f"values/{environment['environment']}.yaml";write_values(values,environment,tenants)
@@ -50,6 +53,6 @@ def main():
  write_csv(output/'reports/dashboard_inventory.csv',['environment','release_name','namespace','tenant_id','configmap_name','title','query'],inventory)
  migration=[{'tenant_id':x['tenant_id'],'source_fields':'tenant_id,display_name,metric_name,window','destination_fields':'tenantId,displayName,metricName,window','tenant_text_executed':'false'} for x in tenants]
  write_csv(output/'reports/migration_map.csv',['tenant_id','source_fields','destination_fields','tenant_text_executed'],migration)
- (output/'RELEASE-NOTES.md').write_text('版本组已将租户标题和查询从tpl片段迁为结构化字段。观测团队可从dashboard_inventory.csv核对两个环境的ConfigMap标题与查询，再由维护窗值班应用候选清单并观察仪表盘。现场标题或查询不符时继续使用旧Chart。\n',encoding='utf-8')
+ (output/'RELEASE-NOTES.md').write_text(f"版本组已将租户标题和查询从tpl片段迁为结构化字段。维护窗口只影响租户仪表盘的标题和查询，值班人员先应用development候选清单，等待{policy['observation_minutes']}分钟并查看结果后再处理production。标题或查询不符时回滚到{policy['rollback_source']}。\n",encoding='utf-8')
  (output/'README.txt').write_text('chart保存不再执行租户文本的Helm Chart，values是两个环境的结构化配置，renders是候选清单。reports中的dashboard_inventory.csv列出标题和查询，migration_map.csv记录字段迁移。\n',encoding='utf-8');finished['ok']=True
 if __name__=='__main__':main()

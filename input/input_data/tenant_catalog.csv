@@ -1,3 +1,0 @@
-tenant_id,display_name,metric_name,window
-alpha,Alpine Retail,http_requests_total,5m
-beta,Boreal Labs,http_requests_total,10m

@@ -4,4 +4,4 @@ tenant_catalog.csv记录租户名称、指标和查询窗口，environment_value
 
 把租户配置改成tenantId、displayName、metricName和window四类结构化字段，values不再接收titleFragment或queryFragment。Chart根据租户和环境字段生成标题与PromQL，每个环境都要通过Helm检查并形成候选ConfigMap清单。
 
-观测团队先看迁移表，再从对象清单核对标题和查询。提交保留新Chart、两个环境values、候选清单和说明。维护窗值班应用清单后查看租户标题与查询；结果不符时继续使用旧Chart。
+观测团队先看迁移表，再从对象清单核对标题和查询。提交保留新Chart、两个环境values、候选清单和说明。维护窗口只影响仪表盘标题与查询，值班人员先处理development，等待策略规定的15分钟并查看结果后再处理production；标题或查询不符时回滚到starter中的旧Chart。

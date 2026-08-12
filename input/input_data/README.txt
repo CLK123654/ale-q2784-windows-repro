@@ -1,3 +1,0 @@
-这些材料来自可观测平台版本组。tenant_catalog.csv保存待迁移租户，environment_values记录两个发布环境，migration_policy.json说明允许的指标和时间窗口，change_request.md写明本次变更原因，starter是仍在执行租户tpl片段的旧Chart。
-
-租户名称和环境均为脱敏构造，不含客户凭据、集群地址或生产数据。
