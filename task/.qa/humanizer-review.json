@@ -33,17 +33,17 @@
   "reviewed_artifacts_sha256": {
     "任务名称.txt": "ecdef189070e461547960aee35984c236466056945f8f220fa0873ec4c17ecca",
     "任务概要.txt": "3a5fc25a6b6afe59c67a3bfe76708507770308722f4ec9a72a910062ab2271a8",
-    "任务prompt.txt": "d41b83d96699b1b964dbf53b8b1585474f1a49df647d86cf14999c9740f6d7a7",
+    "任务prompt.txt": "ee59a5cb1c1c0638ed1ecd757842a3b5d1a69581cfec8c2ee91ca9486b281904",
     "关键动作.txt": "2d489c443d95d001477b0f16e0d0ccafdb2f7176b0f904391b4f66b8c67d28bc",
     "评分表.txt": "57b499745ef69c2b6d8e446725354387de1d6e1f42af834ede4787536e6620db",
-    "环境依赖.txt": "5bffcf3060645651c983932beaa0c645bd5f027c79e58473d8f0d674a896518c",
+    "环境依赖.txt": "5b595d4609572720ab1f5d5576629e7b88d6224022f4e4e7b941771a3a9b5ecb",
     "相关专业软件的关键步骤.txt": "6288c933b0603638635d5486204008fe0f3d68549d7c694e789fb4f6f8784bc0",
-    "task_fields.json": "bee984954073ef465d483ea6cff6584674427a06024efd8082f317e68167899f",
+    "task_fields.json": "51124138f656bda00bdd0f3404c40e542c1f6fbaaccf7616d20762738ec625bc",
     "输入数据包.zip": "d7a80acf98881919498837c34527a5218cc22a3d3e2cc18ebcd625e1f7c34850",
-    "reference.zip": "046e6a88a57d843eef4b737697ab765077dffe2e07d98e486a8e8677b827a2e9",
+    "reference.zip": "f793290b588cebe5ea722c02bd43885947a65417606a4f9dee5fc45b8bb0f9d4",
     "关键标准答案.xlsx": "cfc2dda42a3e7f5f007192bf70d65cacdec6388da0313b0ff1992d43c6b5f24e",
     "任务规格转化.xlsx": "d0df6a9d409d47afbef0a9f1b99d34eb1dbc788bf6077d7ac7ef8ba9c3c8284d",
-    "ALE-专家数据作业表_q2784.csv": "dd9d0a6e0399300fbfa8241eca39d14e9aa3bd5ca5d93e0c3db537919c3a9528"
+    "ALE-专家数据作业表_q2784.csv": "182415e885d8aa334f44240a6a996e645701ae1a52db6a9a111725f1e03b0708"
   },
   "online_ai_field_used_as_conclusion": false,
   "reviewed_on": "2026-08-12"
