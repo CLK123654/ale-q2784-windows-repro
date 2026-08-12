@@ -1,11 +1,11 @@
 ﻿题目ID,学科一级分类,学科二级分类,题目难度,任务概要,涉及的专业软件,包含的操作类型,任务prompt‼️,输入数据包（压缩包）‼️,reference（压缩包）‼️,关键标准答案‼️,关键动作,评分表（直接输入内容或使用txt文档）‼️,本项任务的环境依赖,相关专业软件的关键步骤,任务规格转化（excel或txt文档）,初标是否已完成,生产专家,完成日期
-,"Computing, Data & Mathematical Sciences 计算、数据与数学科学",基础设施工程与云运维,高,可观测平台的旧Chart会把租户提供的标题和查询片段交给tpl执行，版本组准备在下个维护窗停掉这条入口。使用Helm把租户目录改成结构化字段，由Chart生成双环境ConfigMap，并留下字段迁移表和候选清单供观测团队核对。,Helm,领域专业软件操作、文件和数据处理、脚本/命令/程序化处理、结果验证,"可观测平台允许租户定制仪表盘标题和查询，旧Chart却把这些文案直接交给tpl执行。版本组准备在下个维护窗停掉片段入口，现有租户的标题和查询仍要保持原意。主软件使用Helm，工作环境为Windows11。
+,"Computing, Data & Mathematical Sciences 计算、数据与数学科学",基础设施工程与云运维,高,可观测平台的旧Chart会把租户提供的标题和查询片段交给tpl执行，版本组准备在下个维护窗停掉这条入口。使用Helm把租户目录改成结构化字段，由Chart生成双环境ConfigMap，并留下字段迁移表和候选清单供观测团队核对。,Helm,领域专业软件操作、文件和数据处理、脚本/命令/程序化处理、结果验证,"可观测平台允许租户定制仪表盘标题和查询，旧Chart却把这些文案直接交给tpl执行。版本组准备在下个维护窗停掉片段入口，旧客户端本窗仍要可用。主软件使用Helm，工作环境为Windows11。
 
 tenant_catalog.csv记录租户名称、指标和查询窗口，environment_values.csv列出两个发布环境。migration_policy.json限定可用指标、窗口和标题分隔方式，change_request.md说明本次变更，starter保存旧Chart。
 
 把租户配置改成tenantId、displayName、metricName和window四类结构化字段，values不再接收titleFragment或queryFragment。Chart根据租户和环境字段生成标题与PromQL，每个环境都要通过Helm检查并形成候选ConfigMap清单。
 
-观测团队会先看字段迁移表，再从对象清单核对租户、环境、标题和查询。提交中保留新Chart、两个环境values、候选清单和说明材料，现场应用与仪表盘观察由维护窗值班继续处理。",输入数据包.zip,reference.zip,关键标准答案.xlsx,"核对租户目录、环境值、迁移策略与旧Chart中的片段入口。
+观测团队先看迁移表，再从对象清单核对标题和查询。提交保留新Chart、两个环境values、候选清单和说明。维护窗值班应用清单后查看租户标题与查询；结果不符时继续使用旧Chart。",输入数据包.zip,reference.zip,关键标准答案.xlsx,"核对租户目录、环境值、迁移策略与旧Chart中的片段入口。
 把租户标题和查询拆成名称、指标与时间窗口等结构化字段。
 调整Chart模板和values约束，由明确字段生成ConfigMap标题与PromQL。
 用Helm检查新Chart，分别生成development和production候选清单。
@@ -101,7 +101,7 @@ tenant_catalog.csv记录租户名称、指标和查询窗口，environment_value
 
 软件安装阶段可以联网，开始处理材料后只访问本地文件，不需要Kubernetes集群、kubeconfig或外部服务。操作者需要读取输入目录并在本地新建输出目录，不需要生产平台权限。
 
-材料为脱敏构造的租户与环境记录。主要风险是租户片段入口仍留在values、双环境字段串用、查询指标或时间窗口绕过迁移策略，以及对象清单与字段迁移表不一致。","1.读取starter Chart，定位values中的titleFragment、queryFragment及模板内tpl调用。
+材料为脱敏构造的租户与环境记录。主要风险是租户片段入口仍留在values、双环境字段串用、查询指标或时间窗口绕过迁移策略，以及对象清单与字段迁移表不一致。维护窗值班会在应用后查看租户标题和查询结果，异常时继续使用旧Chart。","1.读取starter Chart，定位values中的titleFragment、queryFragment及模板内tpl调用。
 2.根据tenant_catalog.csv和migration_policy.json建立结构化租户values，移除可执行片段字段。
 3.调整values.schema.json，约束tenantId、displayName、metricName、window和环境字段。
 4.改写ConfigMap模板，由租户名称、环境标签、指标、租户ID、集群和窗口拼出标题与PromQL。

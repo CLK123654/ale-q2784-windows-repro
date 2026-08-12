@@ -1,7 +1,7 @@
-可观测平台允许租户定制仪表盘标题和查询，旧Chart却把这些文案直接交给tpl执行。版本组准备在下个维护窗停掉片段入口，现有租户的标题和查询仍要保持原意。主软件使用Helm，工作环境为Windows11。
+可观测平台允许租户定制仪表盘标题和查询，旧Chart却把这些文案直接交给tpl执行。版本组准备在下个维护窗停掉片段入口，旧客户端本窗仍要可用。主软件使用Helm，工作环境为Windows11。
 
 tenant_catalog.csv记录租户名称、指标和查询窗口，environment_values.csv列出两个发布环境。migration_policy.json限定可用指标、窗口和标题分隔方式，change_request.md说明本次变更，starter保存旧Chart。
 
 把租户配置改成tenantId、displayName、metricName和window四类结构化字段，values不再接收titleFragment或queryFragment。Chart根据租户和环境字段生成标题与PromQL，每个环境都要通过Helm检查并形成候选ConfigMap清单。
 
-观测团队会先看字段迁移表，再从对象清单核对租户、环境、标题和查询。提交中保留新Chart、两个环境values、候选清单和说明材料，现场应用与仪表盘观察由维护窗值班继续处理。
+观测团队先看迁移表，再从对象清单核对标题和查询。提交保留新Chart、两个环境values、候选清单和说明。维护窗值班应用清单后查看租户标题与查询；结果不符时继续使用旧Chart。

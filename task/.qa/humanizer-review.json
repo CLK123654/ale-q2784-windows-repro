@@ -1,0 +1,50 @@
+{
+  "skill": "humanizer-zh",
+  "result": "PASS",
+  "reviewed_scopes": [
+    "任务名称",
+    "任务概要",
+    "任务prompt",
+    "关键动作",
+    "评分表",
+    "环境依赖",
+    "软件步骤",
+    "输入材料中的自然语言",
+    "Reference中的用户可见文字",
+    "关键标准答案工作簿全部自然语言",
+    "任务规格工作簿全部自然语言"
+  ],
+  "scores": {
+    "直接性": 10,
+    "节奏": 9,
+    "信任度": 9,
+    "真实性": 9,
+    "精炼度": 9,
+    "total": 46
+  },
+  "minimum_total": 45,
+  "notes": [
+    "标题改为租户仪表盘文案迁移，直接说明业务动作，删除词法白名单、最小上下文、模板逃逸等概念堆叠。",
+    "Prompt从版本组停用旧片段入口进入，不写攻击样本、哨兵、固定不变量、拒绝码、测试矩阵和输出数量。",
+    "原题继续对租户文本执行tpl的方案不够稳妥，新版改为结构化字段，由Chart生成标题和PromQL。",
+    "段落按材料、实际迁移、观测团队消费自然展开，详细字段与失败边界放在评分表和标答。",
+    "与同批标题、开场和收束横向复读，没有沿用交接、审查、处理、调整、补齐或收口等高频后缀，未发现伪引用、无来源数字或推理断裂。"
+  ],
+  "reviewed_artifacts_sha256": {
+    "任务名称.txt": "ecdef189070e461547960aee35984c236466056945f8f220fa0873ec4c17ecca",
+    "任务概要.txt": "3a5fc25a6b6afe59c67a3bfe76708507770308722f4ec9a72a910062ab2271a8",
+    "任务prompt.txt": "d41b83d96699b1b964dbf53b8b1585474f1a49df647d86cf14999c9740f6d7a7",
+    "关键动作.txt": "2d489c443d95d001477b0f16e0d0ccafdb2f7176b0f904391b4f66b8c67d28bc",
+    "评分表.txt": "57b499745ef69c2b6d8e446725354387de1d6e1f42af834ede4787536e6620db",
+    "环境依赖.txt": "5bffcf3060645651c983932beaa0c645bd5f027c79e58473d8f0d674a896518c",
+    "相关专业软件的关键步骤.txt": "6288c933b0603638635d5486204008fe0f3d68549d7c694e789fb4f6f8784bc0",
+    "task_fields.json": "bee984954073ef465d483ea6cff6584674427a06024efd8082f317e68167899f",
+    "输入数据包.zip": "d7a80acf98881919498837c34527a5218cc22a3d3e2cc18ebcd625e1f7c34850",
+    "reference.zip": "046e6a88a57d843eef4b737697ab765077dffe2e07d98e486a8e8677b827a2e9",
+    "关键标准答案.xlsx": "cfc2dda42a3e7f5f007192bf70d65cacdec6388da0313b0ff1992d43c6b5f24e",
+    "任务规格转化.xlsx": "d0df6a9d409d47afbef0a9f1b99d34eb1dbc788bf6077d7ac7ef8ba9c3c8284d",
+    "ALE-专家数据作业表_q2784.csv": "dd9d0a6e0399300fbfa8241eca39d14e9aa3bd5ca5d93e0c3db537919c3a9528"
+  },
+  "online_ai_field_used_as_conclusion": false,
+  "reviewed_on": "2026-08-12"
+}

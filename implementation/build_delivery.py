@@ -50,6 +50,6 @@ def main():
  write_csv(output/'reports/dashboard_inventory.csv',['environment','release_name','namespace','tenant_id','configmap_name','title','query'],inventory)
  migration=[{'tenant_id':x['tenant_id'],'source_fields':'tenant_id,display_name,metric_name,window','destination_fields':'tenantId,displayName,metricName,window','tenant_text_executed':'false'} for x in tenants]
  write_csv(output/'reports/migration_map.csv',['tenant_id','source_fields','destination_fields','tenant_text_executed'],migration)
- (output/'RELEASE-NOTES.md').write_text('版本组已将租户标题和查询从tpl片段迁为结构化字段。观测团队可从dashboard_inventory.csv核对两个环境的ConfigMap标题与查询，再由维护窗值班应用候选清单并观察仪表盘。\n',encoding='utf-8')
+ (output/'RELEASE-NOTES.md').write_text('版本组已将租户标题和查询从tpl片段迁为结构化字段。观测团队可从dashboard_inventory.csv核对两个环境的ConfigMap标题与查询，再由维护窗值班应用候选清单并观察仪表盘。现场标题或查询不符时继续使用旧Chart。\n',encoding='utf-8')
  (output/'README.txt').write_text('chart保存不再执行租户文本的Helm Chart，values是两个环境的结构化配置，renders是候选清单。reports中的dashboard_inventory.csv列出标题和查询，migration_map.csv记录字段迁移。\n',encoding='utf-8');finished['ok']=True
 if __name__=='__main__':main()
