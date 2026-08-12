@@ -1,0 +1,10 @@
+{{- range .Values.tenants }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .tenantId }}-dashboard
+data:
+  title.txt: {{ tpl .titleFragment $ | quote }}
+  query.promql: {{ tpl .queryFragment $ | quote }}
+---
+{{- end }}

@@ -1,0 +1,5 @@
+核对租户目录、环境值、迁移策略与旧Chart中的片段入口。
+把租户标题和查询拆成名称、指标与时间窗口等结构化字段。
+调整Chart模板和values约束，由明确字段生成ConfigMap标题与PromQL。
+用Helm检查新Chart，分别生成development和production候选清单。
+整理仪表盘对象清单、字段迁移表和发布说明，交给观测团队复核。

@@ -1,0 +1,3 @@
+environment,release_name,namespace,label,cluster
+development,tenant-dash-dev,monitoring-dev,development,edge-dev
+production,tenant-dash-prod,monitoring-prod,production,edge-prod

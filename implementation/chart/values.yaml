@@ -1,0 +1,4 @@
+environment:
+  label: development
+  cluster: edge-dev
+tenants: []

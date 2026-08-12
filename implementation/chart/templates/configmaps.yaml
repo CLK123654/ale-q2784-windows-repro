@@ -1,0 +1,13 @@
+{{- range .Values.tenants }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .tenantId }}-dashboard
+  labels:
+    tenant-id: {{ .tenantId | quote }}
+    environment: {{ $.Values.environment.label | quote }}
+data:
+  title.txt: {{ printf "%s | %s" .displayName $.Values.environment.label | quote }}
+  query.promql: {{ printf "sum(rate(%s{tenant_id=\"%s\",cluster=\"%s\"}[%s]))" .metricName .tenantId $.Values.environment.cluster .window | quote }}
+---
+{{- end }}

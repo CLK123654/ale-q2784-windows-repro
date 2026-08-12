@@ -1,0 +1,7 @@
+1.读取starter Chart，定位values中的titleFragment、queryFragment及模板内tpl调用。
+2.根据tenant_catalog.csv和migration_policy.json建立结构化租户values，移除可执行片段字段。
+3.调整values.schema.json，约束tenantId、displayName、metricName、window和环境字段。
+4.改写ConfigMap模板，由租户名称、环境标签、指标、租户ID、集群和窗口拼出标题与PromQL。
+5.分别为development与production生成values，运行helm lint检查Chart。
+6.按release_name与namespace执行helm template，保存两个环境的候选清单。
+7.解析清单并生成对象清单、字段迁移表和发布说明，核对租户与环境对应关系。

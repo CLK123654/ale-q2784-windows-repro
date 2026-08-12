@@ -1,0 +1,7 @@
+tenants:
+  - tenantId: alpha
+    titleFragment: '{{ .Values.environment.label }}'
+    queryFragment: 'sum(rate(http_requests_total[5m]))'
+environment:
+  label: development
+  cluster: edge-dev
